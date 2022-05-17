@@ -65,4 +65,20 @@ class CityProvider with ChangeNotifier {
       rethrow;
     }
   }
+
+  Future<String?> verifyIfActivityNameIsUnique(
+      String cityName, String activityName) async {
+    try {
+      City city = getCityByName(cityName);
+      http.Response response = await http.get(Uri.parse(
+          '$host/api/city/${city.id}/activities/verify/$activityName'));
+      if (response.statusCode != 200) {
+        return json.decode(response.body);
+      } else {
+        return null;
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

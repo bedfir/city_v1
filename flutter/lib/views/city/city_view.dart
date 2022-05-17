@@ -160,10 +160,12 @@ class _CityState extends State<CityView> {
         child: Column(
           children: <Widget>[
             TripOverview(
-                cityName: city.name,
-                trip: mytrip,
-                setDate: setDate,
-                amount: amount),
+              cityName: city.name,
+              trip: mytrip,
+              setDate: setDate,
+              amount: amount,
+              cityImage: city.image,
+            ),
             Expanded(
               child: index == 0
                   ? ActivityList(
