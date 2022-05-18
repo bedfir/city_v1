@@ -26,6 +26,23 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+
+	
+
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We might need your current location for activity</string>
+
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>We might need your current location for activity</string>
+
+
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We might need picture for activity</string>
+
+	<key>NSCameraUsageDescription</key>
+	<string>We might need picture for activity</string>
+
+
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

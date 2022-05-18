@@ -7,12 +7,14 @@ class Activity {
   String city;
   double price;
   ActivityStatus status;
+  LocationActivity? location;
   Activity({
     required this.name,
     required this.city,
     required this.image,
     required this.price,
     this.id,
+    this.location,
     this.status = ActivityStatus.ongoing,
   });
 
@@ -22,6 +24,11 @@ class Activity {
         image = json['image'],
         city = json['city'],
         price = json['price']?.toDouble(),
+        location = LocationActivity(
+          address: json['address'],
+          latitude: json['latitude'],
+          longitude: json['longitude'],
+        ),
         status =
             json['status'] == 0 ? ActivityStatus.ongoing : ActivityStatus.done;
 
@@ -32,6 +39,9 @@ class Activity {
       'image': image,
       'city': city,
       'price': price,
+      'adress': location!.address,
+      'longitude': location!.longitude,
+      'latitude': location!.latitude,
       'status': status == ActivityStatus.ongoing ? 0 : 1
     };
     if (id != null) {
@@ -39,4 +49,15 @@ class Activity {
     }
     return value;
   }
+}
+
+class LocationActivity {
+  String? address;
+  double? longitude;
+  double? latitude;
+  LocationActivity({
+    this.address,
+    this.longitude,
+    this.latitude,
+  });
 }

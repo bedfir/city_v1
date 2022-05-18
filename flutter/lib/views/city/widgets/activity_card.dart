@@ -14,6 +14,7 @@ class ActivityCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(activity.image);
     return Container(
         height: 150,
         child: Stack(

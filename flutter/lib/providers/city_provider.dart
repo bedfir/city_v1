@@ -1,10 +1,14 @@
 import 'dart:collection';
+import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import '../models/activity_model.dart';
 import '../models/city_model.dart';
+
+import 'package:http_parser/http_parser.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:path/path.dart';
 
 class CityProvider with ChangeNotifier {
   final String host = 'http://10.0.2.2';
@@ -76,6 +80,34 @@ class CityProvider with ChangeNotifier {
         return json.decode(response.body);
       } else {
         return null;
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<String> uploadImage(File pickedImage) async {
+    try {
+      var request = http.MultipartRequest(
+        "POST",
+        Uri.parse('$host/api/acitity/image'),
+      );
+
+      request.files.add(
+        http.MultipartFile.fromBytes(
+          'activity',
+          pickedImage.readAsBytesSync(),
+          filename: basename(pickedImage.path),
+          contentType: MediaType("multipart", "form-data"),
+        ),
+      );
+
+      var response = await request.send();
+      if (response.statusCode == 200) {
+        var responseData = await response.stream.toBytes();
+        return json.decode(String.fromCharCodes(responseData));
+      } else {
+        throw 'error';
       }
     } catch (e) {
       rethrow;
