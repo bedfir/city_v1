@@ -78,4 +78,11 @@ class TripProvider with ChangeNotifier {
   Trip getById(String tripId) {
     return trips.firstWhere((trip) => trip.id == tripId);
   }
+
+  Activity getActivityByIds(
+      {required String activityId, required String tripId}) {
+    return getById(tripId)
+        .activities
+        .firstWhere((activity) => activity.id == activityId);
+  }
 }

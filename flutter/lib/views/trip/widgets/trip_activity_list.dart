@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_chapitre13/views/google_map/google_map_view.dart';
 import '../../../models/activity_model.dart';
 import '../../../models/trip_model.dart';
 import '../../../providers/trip_provider.dart';
@@ -41,9 +42,19 @@ class TripActivityList extends StatelessWidget {
                         ),
                       ),
                       key: ValueKey(activity.id),
-                      child: Card(
-                        child: ListTile(
-                          title: Text(activity.name),
+                      child: InkWell(
+                        onTap: () => Navigator.pushNamed(
+                          context,
+                          GoogleMapView.routeName,
+                          arguments: {
+                            'activityId': activity.id,
+                            'tripId': trip.id
+                          },
+                        ),
+                        child: Card(
+                          child: ListTile(
+                            title: Text(activity.name),
+                          ),
                         ),
                       ),
                       confirmDismiss: (_) {

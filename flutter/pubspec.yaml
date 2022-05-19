@@ -33,11 +33,20 @@ dependencies:
   http: ^0.13.3
   image_picker: ^0.8.5+3
   location: ^4.2.0
+  google_maps_flutter: ^2.1.5
+  url_launcher: ^6.1.2
 
 dev_dependencies:
+  flutter_launcher_icons: ^0.9.2
   flutter_test:
     sdk: flutter
 
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/icon.png"
+  adaptative_icon_foregroound: "assets/icon/adptative_icon.png"
+  adaptative_icon_background: "#27ae60"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
